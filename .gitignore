@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build directories
+build/
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+
+# Test artifacts
+*.tgz
+
+# Yarn
+yarn-error.log
+yarn-debug.log*
+
+# TypeScript files (if applicable)
+*.tsbuildinfo
+
+# Other files you might want to ignore
+package-lock.json
