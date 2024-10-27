@@ -1,44 +1,58 @@
 .congratulations-main {
-  display: flex; /* Use Flexbox */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  height: 100vh; /* Full viewport height */
-  text-align: center; /* Center text alignment */
-  background-color: #f0f8ff; /* Optional: Light background color */
-  position: relative; /* Ensure confetti is positioned correctly */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f0f8ff;
+  position: relative;
 }
 
 h1 {
-  font-size: 2.5rem; /* Adjust the font size */
-  margin: 0; /* Remove default margin */
+  font-size: 2.5rem;
+  margin: 0;
 }
 
 p {
-  font-size: 1.2rem; /* Adjust the font size */
-  margin: 10px 0 0; /* Add some space above the paragraph */
+  font-size: 1.2rem;
+  margin: 10px 0 0;
 }
 
-select {
-  margin-top: 20px; /* Space above the dropdown */
-  padding: 10px; /* Padding inside the dropdown */
-  font-size: 1rem; /* Font size for dropdown */
-  border: 1px solid #ccc; /* Border styling */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #fff; /* Background color */
-  cursor: pointer; /* Change cursor on hover */
-  width: 200px; /* Set a fixed width for the dropdown */
-  max-width: 100%; /* Ensure it doesn't overflow */
+.button-container {
+  margin-top: 20px; /* Space above the buttons */
 }
 
-/* Center the dropdown */
-.congratulations-main select {
-  display: block; /* Make it a block element */
-  margin-left: auto; /* Center horizontally */
-  margin-right: auto; /* Center horizontally */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between cards */
+  margin-top: 10px; /* Space above cards */
 }
 
-/* Optional: Add some hover effects */
-select:hover {
+.card {
+  width: 150px; /* Card width */
+  padding: 20px; /* Inner padding */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Pointer cursor */
+  transition: transform 0.3s, border-color 0.3s; /* Smooth transition */
+  background-color: white; /* Card background */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge card on hover */
   border-color: #007bff; /* Change border color on hover */
+}
+
+.card h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.5rem; /* Font size for title */
+}
+
+.card p {
+  margin-top: 5px; /* Space above description */
+  font-size: 0.9rem; /* Smaller font size for description */
+  color: #555; /* Gray color for description */
 }
