@@ -1,5 +1,14 @@
 require("dotenv").config();
 require("express-async-errors");
+<<<<<<< Updated upstream
+=======
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const webpush = require('web-push');
+const path = require('path');
+// const 
+
+>>>>>>> Stashed changes
 
 const connectDB = require("./db/connect");
 const express = require("express");
@@ -7,10 +16,22 @@ const cors = require("cors");
 const app = express();
 const mainRouter = require("./routes/user");
 
+<<<<<<< Updated upstream
+=======
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json());
+
+>>>>>>> Stashed changes
 app.use(express.json());
 
 app.use(cors());
 
+<<<<<<< Updated upstream
+=======
+// app.use(express.static(path.join(__dirname, "client/notification")));
+
+// app.listen(9000, () => console.log('The server has been started on the port 9000'))
+>>>>>>> Stashed changes
 // Add a basic route for the root URL
 app.get("/", (req, res) => {
   res.send("Welcome to the Home Page!");
@@ -33,3 +54,35 @@ const start = async () => {
 };
 
 start();
+<<<<<<< Updated upstream
+=======
+
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY; 
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
+
+webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, publicVapidKey, privateVapidKey)
+
+app.post("/subscribe", (req, res) => {
+  // Get pushSubscription object
+  const subscription = req.body;
+  console.log(subscription);
+  res.status(201).json({});
+
+  const payload = JSON.stringify({ title: "Push Test" });
+
+  // Pass object into sendNotification
+  webpush
+    .sendNotification(subscription, payload)
+    .catch(err => console.error(err));
+});
+
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/index.html");
+// });
+// app.get("/main.js", (req, res) => {
+//   res.sendFile(__dirname + "/main.js");
+// });
+// app.get("/sw.js", (req, res) => {
+//   res.sendFile(__dirname + "/sw.js");
+// });
+>>>>>>> Stashed changes
