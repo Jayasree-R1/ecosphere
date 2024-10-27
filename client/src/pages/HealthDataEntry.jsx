@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/HealthDataEntry.css"; // Ensure you create this CSS file
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,11 +7,13 @@ import { toast } from "react-toastify";
 
 const HealthDataEntry = () => {
   const [existingCondition, setExistingCondition] = useState("");
+  const [conditions, setConditions] = useState([]);
   const [dob, setDob] = useState("");
   const [weight, setWeight] = useState("");
   const [disability, setDisability] = useState("No");
   const [sex, setSex] = useState("");
   const [location, setLocation] = useState("");
+  const [locationSuggestions, setLocationSuggestions] = useState([]);
   const [ageError, setAgeError] = useState("");
   const [conditionError, setConditionError] = useState("");
   const [weightError, setWeightError] = useState("");
@@ -33,22 +35,54 @@ const HealthDataEntry = () => {
     return age >= 18;
   };
 
+  const fetchConditions = async (query) => {
+    try {
+      const response = await axios.get(
+        `https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?terms=${query}`
+      );
+      setConditions(response.data[3]);
+    } catch (error) {
+      console.error("Error fetching conditions:", error);
+    }
+  };
+
+  const fetchLocationSuggestions = async (location) => {
+    try {
+      const response = await axios.get(
+        `https://api.locationiq.com/v1/autocomplete.php`,
+        {
+          params: {
+            key: "pk.4009fc56c2fc7858c22f781e097e4d66", // Your API access token
+            q: location,
+            limit: 5,
+            dedupe: 1,
+            country: "US", // Restrict to the USA
+          },
+        }
+      );
+      return response.data || [];
+    } catch (error) {
+      console.error("Error fetching location suggestions:", error);
+      return [];
+    }
+  };
+
   const handleHealthDataSubmit = async (e) => {
     e.preventDefault();
-    setAgeError(""); // Reset age error
-    setConditionError(""); // Reset condition error
-    setWeightError(""); // Reset weight error
+    setAgeError("");
+    setConditionError("");
+    setWeightError("");
 
-    // Check if existing condition is selected
+    // Validate existing condition
     if (!existingCondition) {
       setConditionError("Chronic condition is required.");
-      return; // Stop the submission
+      return;
     }
 
     // Validate weight
     if (weight <= 0) {
       setWeightError("Weight must be a positive number.");
-      return; // Stop the submission
+      return;
     }
 
     const healthData = {
@@ -59,18 +93,13 @@ const HealthDataEntry = () => {
       sex,
       location,
     };
-
-    const token = JSON.parse(localStorage.getItem("auth")); // Retrieve the token
+    const token = JSON.parse(localStorage.getItem("auth"));
 
     try {
       await axios.post("http://localhost:3000/api/v1/healthdata", healthData, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Include the token in the header
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Health data submitted successfully");
-
-      // Store the health data in localStorage or sessionStorage
       localStorage.setItem("healthData", JSON.stringify(healthData));
       navigate("/congratulations");
     } catch (err) {
@@ -84,7 +113,7 @@ const HealthDataEntry = () => {
     if (!validateAge(dobValue)) {
       setAgeError("You must be at least 18 years old.");
     } else {
-      setAgeError(""); // Clear the error if age is valid
+      setAgeError("");
     }
   };
 
@@ -94,7 +123,7 @@ const HealthDataEntry = () => {
     if (weightValue <= 0) {
       setWeightError("Weight must be a positive number.");
     } else {
-      setWeightError(""); // Clear the error if weight is valid
+      setWeightError("");
     }
   };
 
@@ -105,14 +134,59 @@ const HealthDataEntry = () => {
     setDisability("No");
     setSex("");
     setLocation("");
+    setLocationSuggestions([]);
   };
+
+  const handleLocationChange = async (e) => {
+    const locationValue = e.target.value;
+    setLocation(locationValue);
+    if (locationValue) {
+      const suggestions = await fetchLocationSuggestions(locationValue);
+      setLocationSuggestions(suggestions);
+    } else {
+      setLocationSuggestions([]);
+    }
+  };
+
+  const handleLocationSelect = (selectedLocation) => {
+    setLocation(selectedLocation);
+    setLocationSuggestions([]);
+  };
+
+  // Fetch user's geolocation when component mounts
+  useEffect(() => {
+    const fetchLocation = async (lat, lon) => {
+      try {
+        const response = await axios.get(
+          `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=e01833d681734d7b9b452864dc449ad5`
+        );
+        const address =
+          response.data.results[0]?.formatted || "Unknown Location";
+        setLocation(address);
+      } catch (error) {
+        console.error("Error fetching address:", error);
+      }
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchLocation(latitude, longitude);
+        },
+        (error) => console.error("Error fetching location:", error)
+      );
+    } else {
+      console.error("Geolocation not supported by this browser.");
+    }
+  }, []);
 
   return (
     <div className="health-data-entry-main">
       <h2 className="title">Vital Health Information</h2>
       <div className="form-container">
         <form onSubmit={handleHealthDataSubmit}>
-          {/* Form Fields */}
+          {/* Existing Condition Dropdown */}
           <div className="form-group">
             <label htmlFor="existingCondition">
               What chronic conditions do you have?{" "}
@@ -127,7 +201,7 @@ const HealthDataEntry = () => {
               }}
               required
             >
-              <option value="">Select...</option>
+              <option value="">Select a condition...</option>
               <option value="Asthma">Asthma</option>
               <option value="Chronic Obstructive Pulmonary Disease (COPD)">
                 Chronic Obstructive Pulmonary Disease (COPD)
@@ -145,12 +219,18 @@ const HealthDataEntry = () => {
               <option value="Eczema">Eczema</option>
               <option value="Psoriasis">Psoriasis</option>
               <option value="Other">Other</option>
+              {conditions.map((condition, index) => (
+                <option key={index} value={condition[0]}>
+                  {condition[0]}
+                </option>
+              ))}
             </select>
             {conditionError && (
               <div className="error-message">{conditionError}</div>
             )}
           </div>
 
+          {/* Date of Birth */}
           <div className="form-group">
             <label htmlFor="dob">
               Enter your date of birth: <span className="error">*</span>
@@ -165,6 +245,7 @@ const HealthDataEntry = () => {
             {ageError && <div className="error-message">{ageError}</div>}
           </div>
 
+          {/* Weight */}
           <div className="form-group">
             <label htmlFor="weight">
               Your weight (in lbs): <span className="error">*</span>
@@ -179,6 +260,7 @@ const HealthDataEntry = () => {
             {weightError && <div className="error-message">{weightError}</div>}
           </div>
 
+          {/* Disability Status */}
           <div className="form-group">
             <label htmlFor="disability">Do you have any disabilities?</label>
             <select
@@ -192,6 +274,7 @@ const HealthDataEntry = () => {
             </select>
           </div>
 
+          {/* Gender Identity */}
           <div className="form-group">
             <label htmlFor="sex">
               Your gender identity: <span className="error">*</span>
@@ -215,6 +298,7 @@ const HealthDataEntry = () => {
             </select>
           </div>
 
+          {/* Location */}
           <div className="form-group">
             <label htmlFor="location">
               Your current location: <span className="error">*</span>
@@ -223,10 +307,25 @@ const HealthDataEntry = () => {
               type="text"
               id="location"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={handleLocationChange}
               placeholder="Enter your location"
               required
             />
+            {Array.isArray(locationSuggestions) &&
+              locationSuggestions.length > 0 && (
+                <ul className="suggestions-list">
+                  {locationSuggestions.map((suggestion) => (
+                    <li
+                      key={suggestion.place_id}
+                      onClick={() =>
+                        handleLocationSelect(suggestion.display_name)
+                      }
+                    >
+                      {suggestion.display_name}
+                    </li>
+                  ))}
+                </ul>
+              )}
           </div>
 
           <div className="form-buttons">
