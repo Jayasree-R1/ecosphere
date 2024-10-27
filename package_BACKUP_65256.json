@@ -18,10 +18,13 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
+<<<<<<< HEAD
     "react-confetti": "^6.1.0",
-    "react-select": "^5.8.2",
+    "react-select": "^5.8.2"
+=======
     "node-pushnotifications": "^3.1.1",
     "web-push": "^3.6.7"
+>>>>>>> d4c9b024ce3ddca626d377c9513fb7a45874b1bd
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
