@@ -129,8 +129,22 @@ const HealthDataEntry = () => {
             >
               <option value="">Select...</option>
               <option value="Asthma">Asthma</option>
-              <option value="Diabetes">Diabetes</option>
+              <option value="Chronic Obstructive Pulmonary Disease (COPD)">
+                Chronic Obstructive Pulmonary Disease (COPD)
+              </option>
+              <option value="Allergies">Allergies</option>
+              <option value="Rheumatoid Arthritis">Rheumatoid Arthritis</option>
+              <option value="Osteoarthritis">Osteoarthritis</option>
+              <option value="Migraines">Migraines</option>
+              <option value="Multiple Sclerosis">Multiple Sclerosis</option>
+              <option value="Fibromyalgia">Fibromyalgia</option>
+              <option value="Chronic Sinusitis">Chronic Sinusitis</option>
               <option value="Heart Disease">Heart Disease</option>
+              <option value="Hypertension">Hypertension</option>
+              <option value="Diabetes">Diabetes</option>
+              <option value="Eczema">Eczema</option>
+              <option value="Psoriasis">Psoriasis</option>
+              <option value="Other">Other</option>
             </select>
             {conditionError && (
               <div className="error-message">{conditionError}</div>
@@ -186,10 +200,17 @@ const HealthDataEntry = () => {
               id="sex"
               value={sex}
               onChange={(e) => setSex(e.target.value)}
+              required
             >
               <option value="">Select...</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+              <option value="Transgender Male">Transgender Male</option>
+              <option value="Transgender Female">Transgender Female</option>
+              <option value="Genderqueer">Genderqueer</option>
+              <option value="Agender">Agender</option>
+              <option value="Two-Spirit">Two-Spirit</option>
               <option value="Other">Other</option>
             </select>
           </div>

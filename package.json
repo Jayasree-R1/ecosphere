@@ -16,7 +16,8 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
-    "react-confetti": "^6.1.0"
+    "react-confetti": "^6.1.0",
+    "react-select": "^5.8.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
