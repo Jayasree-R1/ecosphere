@@ -1,15 +1,23 @@
 require("dotenv").config();
 require("express-async-errors");
 const bodyParser = require('body-parser');
+<<<<<<< Updated upstream
 const cors = require('cors');
 const webpush = require('web-push');
 const path = require('path');
 // const 
+=======
+const webpush = require('web-push');
+const path = require('path');
+>>>>>>> Stashed changes
 
 const connectDB = require("./db/connect");
 const express = require("express");
 const app = express();
 const mainRouter = require("./routes/user");
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json());
 
 app.use(express.json());
 
@@ -59,6 +67,7 @@ app.post("/subscribe", (req, res) => {
     .catch(err => console.error(err));
 });
 
+<<<<<<< Updated upstream
 // app.get("/", (req, res) => {
 //   res.sendFile(__dirname + "/index.html");
 // });
@@ -68,3 +77,5 @@ app.post("/subscribe", (req, res) => {
 // app.get("/sw.js", (req, res) => {
 //   res.sendFile(__dirname + "/sw.js");
 // });
+=======
+>>>>>>> Stashed changes
