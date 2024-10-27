@@ -11,10 +11,10 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [ token, setToken ] = useState(JSON.parse(localStorage.getItem("auth")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("auth")) || ""
+  );
   const navigate = useNavigate();
-
-
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -31,9 +31,9 @@ const Login = () => {
           "http://localhost:3000/api/v1/login",
           formData
         );
-        localStorage.setItem('auth', JSON.stringify(response.data.token));
+        localStorage.setItem("auth", JSON.stringify(response.data.token));
         toast.success("Login successfull");
-        navigate("/dashboard");
+        navigate("/health-data-entry");
       } catch (err) {
         console.log(err);
         toast.error(err.message);
@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if(token !== ""){
+    if (token !== "") {
       toast.success("You already logged in");
       navigate("/dashboard");
     }

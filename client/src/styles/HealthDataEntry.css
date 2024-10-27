@@ -1,0 +1,17 @@
+.health-data-entry-main {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-buttons {
+  margin-top: 20px;
+}
+
+.cancel-button {
+  margin-left: 10px;
+  text-decoration: none;
+  color: red;
+}
