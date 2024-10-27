@@ -7,11 +7,11 @@ const Landing = () => {
     <div className="landing-main">
       <h1>Welcome to EcoSphere</h1>
       <p>Your health is our priority!</p>
-      <p>
+      {/* <p>
         Enter your health data and take control of your well-being. Our app not
         only tracks your health conditions but also monitors weather factors
         that directly impact your health.
-      </p>
+      </p> */}
       <p>
         Stay ahead of potential risks and receive timely notifications tailored
         to your specific needs. Your health matters, and we’re here to help you

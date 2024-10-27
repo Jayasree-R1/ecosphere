@@ -7,3 +7,4 @@ export { default as Logout } from "./Logout";
 export { default as HealthDataEntry } from "./HealthDataEntry";
 export { default as Congratulations } from "./Congratulations";
 export { default as Profile } from "./Profile";
+export { default as HealthInformation } from "./HealthInformation";

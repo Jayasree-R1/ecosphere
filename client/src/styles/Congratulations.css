@@ -18,3 +18,27 @@ p {
   font-size: 1.2rem; /* Adjust the font size */
   margin: 10px 0 0; /* Add some space above the paragraph */
 }
+
+select {
+  margin-top: 20px; /* Space above the dropdown */
+  padding: 10px; /* Padding inside the dropdown */
+  font-size: 1rem; /* Font size for dropdown */
+  border: 1px solid #ccc; /* Border styling */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* Background color */
+  cursor: pointer; /* Change cursor on hover */
+  width: 200px; /* Set a fixed width for the dropdown */
+  max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+/* Center the dropdown */
+.congratulations-main select {
+  display: block; /* Make it a block element */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+
+/* Optional: Add some hover effects */
+select:hover {
+  border-color: #007bff; /* Change border color on hover */
+}

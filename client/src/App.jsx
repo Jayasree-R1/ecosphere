@@ -10,6 +10,7 @@ import {
   HealthDataEntry,
   Congratulations,
   Profile,
+  HealthInformation,
 } from "./pages";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "profile", // New route for Profile
         element: <Profile />,
+      },
+      {
+        path: "health-information", // New route for Profile
+        element: <HealthInformation />,
       },
     ],
   },
