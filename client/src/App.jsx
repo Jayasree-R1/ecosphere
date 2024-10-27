@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
   Dashboard,
@@ -7,6 +8,7 @@ import {
   Logout,
   Register,
   HealthDataEntry,
+  Congratulations,
 } from "./pages";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "health-data-entry", // New route added
         element: <HealthDataEntry />,
+      },
+      {
+        path: "congratulations", // New route for congratulations
+        element: <Congratulations />,
       },
     ],
   },

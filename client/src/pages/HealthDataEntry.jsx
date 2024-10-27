@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "../styles/HealthDataEntry.css"; // Ensure you create this CSS file
 import { Link, useNavigate } from "react-router-dom";
@@ -25,10 +26,19 @@ const HealthDataEntry = () => {
       location,
     };
 
+    const token = JSON.parse(localStorage.getItem("auth")); // Retrieve the token
+
     try {
-      await axios.post("http://localhost:3000/api/v1/healthdata", healthData);
+      await axios.post("http://localhost:3000/api/v1/healthdata", healthData, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the header
+        },
+      });
       toast.success("Health data submitted successfully");
-      navigate("/dashboard"); // Adjust the navigation as needed
+      // Navigate to the Congratulations page with the user's name
+      //   navigate("/congratulations", { state: { userName: "YourName" } }); // Replace "YourName" with the actual user name
+      navigate("/congratulations");
+      // navigate("/dashboard"); // Adjust the navigation as needed
     } catch (err) {
       toast.error("Error submitting health data: " + err.message);
     }

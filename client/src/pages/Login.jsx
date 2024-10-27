@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Image from "../assets/image.png";
 import Logo from "../assets/logo.png";
@@ -46,7 +47,7 @@ const Login = () => {
   useEffect(() => {
     if (token !== "") {
       toast.success("You already logged in");
-      navigate("/dashboard");
+      navigate("/login");
     }
   }, []);
 
@@ -108,7 +109,7 @@ const Login = () => {
           </div>
 
           <p className="login-bottom-p">
-            Don't have an account? <Link to="/register">Sign Up</Link>
+            Do not have an account? <Link to="/register">Sign Up</Link>
           </p>
         </div>
       </div>

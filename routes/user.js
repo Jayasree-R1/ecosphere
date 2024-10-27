@@ -7,6 +7,7 @@ const {
   dashboard,
   getAllUsers,
 } = require("../controllers/user");
+const { submitHealthData } = require("../controllers/healthData");
 const authMiddleware = require("../middleware/auth");
 
 router.route("/login").post(login);
