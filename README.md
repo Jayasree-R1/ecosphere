@@ -49,7 +49,7 @@ Backend:
 1. Clone the repository:
 
 ```
-git clone https://github.com/Kuzma02/MERN-Login-And-Register-With-JSON-Web-Token.git
+git clone https://github.com/Jayasree-R1/ecosphere.git
 ```
 
 2. Install dependencies:
