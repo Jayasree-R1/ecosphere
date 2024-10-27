@@ -1,0 +1,20 @@
+.congratulations-main {
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center text alignment */
+  background-color: #f0f8ff; /* Optional: Light background color */
+  position: relative; /* Ensure confetti is positioned correctly */
+}
+
+h1 {
+  font-size: 2.5rem; /* Adjust the font size */
+  margin: 0; /* Remove default margin */
+}
+
+p {
+  font-size: 1.2rem; /* Adjust the font size */
+  margin: 10px 0 0; /* Add some space above the paragraph */
+}

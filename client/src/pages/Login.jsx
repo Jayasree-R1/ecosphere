@@ -62,8 +62,8 @@ const Login = () => {
             <img src={Logo} alt="" />
           </div>
           <div className="login-center">
-            <h2>Welcome back!</h2>
-            <p>Please enter your details</p>
+            <h2>Chronic Conditions? Together, We Rise!</h2>
+            <p>Enter Your Credentials to Unlock Your Health Journey!</p>
             <form onSubmit={handleLoginSubmit}>
               <input type="email" placeholder="Email" name="email" />
               <div className="pass-input-div">

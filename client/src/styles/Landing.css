@@ -1,62 +1,43 @@
-.landing-main{
-    font-size: 30px;
-    height: 100vh;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.landing-main {
+  font-size: 30px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px; /* Added padding to the main container */
+  background-color: #e0f7fa; /* Light cyan background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center; /* Centered text */
 }
 
-.landing-login-button{
-    background: black;
-    color: white;
-    border: 3px solid black;
-    transition: background 1s linear 0ms;
-    transition: color 500ms linear 0ms;
+.landing-login-button,
+.landing-register-button {
+  background: black;
+  color: white;
+  border: 3px solid black;
+  transition: background 1s linear, color 500ms linear;
+  width: 500px;
+  padding: 16px;
+  border-radius: 30px; /* Uniform border radius */
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0; /* Space between buttons */
+}
 
-    width: 500px;
-    padding: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-top: 10px;
+.landing-register-button:hover,
+.landing-login-button:hover {
+  color: #333;
+  background-color: white;
+}
 
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .landing-register-button{
-    background: black;
-    color: white;
-    border: 3px solid black;
-    transition: background 1s linear 0ms;
-    transition: color 500ms linear 0ms;
-
-    width: 500px;
-    padding: 16px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-top: 10px;
-
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  
-  .landing-register-button:hover{
-    color: #333;
-    background-color: white;
-  }
-
-  .landing-login-button:hover{
-    color: #333;
-    background-color: white;
-  }
+/* Additional styles for paragraph spacing */
+.landing-main p {
+  margin: 15px 0; /* Space above and below each paragraph */
+  line-height: 1.6; /* Increased line height for readability */
+  padding: 0 10px; /* Optional horizontal padding */
+}

@@ -1,17 +1,84 @@
+/* HealthDataEntry.css */
+
 .health-data-entry-main {
+  font-family: Arial, sans-serif;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto; /* Added margin-top to create space from the search bar */
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .form-group {
   margin-bottom: 15px;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+select,
+input[type="date"],
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+select:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 .form-buttons {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 
 .cancel-button {
   margin-left: 10px;
   text-decoration: none;
   color: red;
+  padding: 10px 20px;
+  border: 1px solid red;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: rgba(255, 0, 0, 0.1);
 }

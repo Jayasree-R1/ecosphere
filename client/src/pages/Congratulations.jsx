@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { useLocation } from "react-router-dom";
+import Confetti from "react-confetti"; // Import the Confetti component
+import "../styles/Congratulations.css"; // Adjust the path as necessary
 
 const Congratulations = () => {
-  //   const { state } = useLocation();
-  //   const { userName } = state || { userName: "User" }; // Default to "User" if not provided
+  const [width, height] = [window.innerWidth, window.innerHeight];
 
   return (
     <div className="congratulations-main">
+      {/* Render the Confetti component */}
+      <Confetti width={width} height={height} />
+
       {/* <h1>Congratulations, {userName}!</h1> */}
-      <h1>congratulations!</h1>
-      <p>You are all set with EcoSphere</p>
+      <h1>Congratulations!</h1>
+      <p>You’re now equipped with EcoSphere for a healthier lifestyle!</p>
     </div>
   );
 };

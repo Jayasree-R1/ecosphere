@@ -6,3 +6,4 @@ export { default as Register } from "./Register";
 export { default as Logout } from "./Logout";
 export { default as HealthDataEntry } from "./HealthDataEntry";
 export { default as Congratulations } from "./Congratulations";
+export { default as Profile } from "./Profile";
