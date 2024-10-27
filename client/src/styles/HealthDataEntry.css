@@ -1,20 +1,20 @@
-/* HealthDataEntry.css */
-
 .health-data-entry-main {
-  font-family: Arial, sans-serif;
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto; /* Added margin-top to create space from the search bar */
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.title {
   text-align: center;
-  color: #333;
   margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -25,27 +25,27 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
 }
 
 select,
+input[type="text"],
 input[type="date"],
-input[type="number"],
-input[type="text"] {
+input[type="number"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s;
+  box-sizing: border-box;
 }
 
-select:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
-input[type="text"]:focus {
-  border-color: #007bff;
-  outline: none;
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.error {
+  color: red; /* Color for asterisks */
 }
 
 .form-buttons {
@@ -54,31 +54,48 @@ input[type="text"]:focus {
   margin-top: 20px;
 }
 
-button {
-  background-color: #007bff;
+.submit-button,
+.reset-button {
+  background-color: #007bff; /* Blue color for buttons */
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 4px;
+  padding: 10px 15px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  flex: 1; /* Ensure buttons are the same width */
+  margin-right: 10px; /* Space between buttons */
 }
 
-button:hover {
-  background-color: #0056b3;
+.submit-button:hover,
+.reset-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 .cancel-button {
+  display: inline-block;
   margin-left: 10px;
+  padding: 10px 15px;
+  color: #007bff;
   text-decoration: none;
-  color: red;
-  padding: 10px 20px;
-  border: 1px solid red;
+  border: 1px solid #007bff;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .cancel-button:hover {
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: #007bff;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .form-buttons {
+    flex-direction: column; /* Stack buttons on small screens */
+  }
+
+  .submit-button,
+  .reset-button {
+    margin-right: 0; /* Reset margin for small screens */
+    margin-bottom: 10px; /* Space between buttons */
+  }
 }

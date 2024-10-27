@@ -12,10 +12,44 @@ const HealthDataEntry = () => {
   const [disability, setDisability] = useState("No");
   const [sex, setSex] = useState("");
   const [location, setLocation] = useState("");
+  const [ageError, setAgeError] = useState("");
+  const [conditionError, setConditionError] = useState("");
+  const [weightError, setWeightError] = useState("");
   const navigate = useNavigate();
+
+  const validateAge = (dob) => {
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age >= 18;
+  };
 
   const handleHealthDataSubmit = async (e) => {
     e.preventDefault();
+    setAgeError(""); // Reset age error
+    setConditionError(""); // Reset condition error
+    setWeightError(""); // Reset weight error
+
+    // Check if existing condition is selected
+    if (!existingCondition) {
+      setConditionError("Chronic condition is required.");
+      return; // Stop the submission
+    }
+
+    // Validate weight
+    if (weight <= 0) {
+      setWeightError("Weight must be a positive number.");
+      return; // Stop the submission
+    }
 
     const healthData = {
       existingCondition,
@@ -44,6 +78,26 @@ const HealthDataEntry = () => {
     }
   };
 
+  const handleDobChange = (e) => {
+    const dobValue = e.target.value;
+    setDob(dobValue);
+    if (!validateAge(dobValue)) {
+      setAgeError("You must be at least 18 years old.");
+    } else {
+      setAgeError(""); // Clear the error if age is valid
+    }
+  };
+
+  const handleWeightChange = (e) => {
+    const weightValue = e.target.value;
+    setWeight(weightValue);
+    if (weightValue <= 0) {
+      setWeightError("Weight must be a positive number.");
+    } else {
+      setWeightError(""); // Clear the error if weight is valid
+    }
+  };
+
   const handleResetForm = () => {
     setExistingCondition("");
     setDob("");
@@ -55,19 +109,22 @@ const HealthDataEntry = () => {
 
   return (
     <div className="health-data-entry-main">
-      <h2 className="title">Vital Health Information</h2>{" "}
-      {/* Title is outside the form */}
+      <h2 className="title">Vital Health Information</h2>
       <div className="form-container">
         <form onSubmit={handleHealthDataSubmit}>
           {/* Form Fields */}
           <div className="form-group">
             <label htmlFor="existingCondition">
-              What chronic conditions do you have?
+              What chronic conditions do you have?{" "}
+              <span className="error">*</span>
             </label>
             <select
               id="existingCondition"
               value={existingCondition}
-              onChange={(e) => setExistingCondition(e.target.value)}
+              onChange={(e) => {
+                setExistingCondition(e.target.value);
+                if (e.target.value) setConditionError(""); // Clear error if valid
+              }}
               required
             >
               <option value="">Select...</option>
@@ -75,28 +132,37 @@ const HealthDataEntry = () => {
               <option value="Diabetes">Diabetes</option>
               <option value="Heart Disease">Heart Disease</option>
             </select>
+            {conditionError && (
+              <div className="error-message">{conditionError}</div>
+            )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="dob">Enter your date of birth:</label>
+            <label htmlFor="dob">
+              Enter your date of birth: <span className="error">*</span>
+            </label>
             <input
               type="date"
               id="dob"
               value={dob}
-              onChange={(e) => setDob(e.target.value)}
+              onChange={handleDobChange}
               required
             />
+            {ageError && <div className="error-message">{ageError}</div>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="weight">Your weight (in kg):</label>
+            <label htmlFor="weight">
+              Your weight (in lbs): <span className="error">*</span>
+            </label>
             <input
               type="number"
               id="weight"
               value={weight}
-              onChange={(e) => setWeight(e.target.value)}
+              onChange={handleWeightChange}
               required
             />
+            {weightError && <div className="error-message">{weightError}</div>}
           </div>
 
           <div className="form-group">
@@ -113,12 +179,13 @@ const HealthDataEntry = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="sex">Your gender identity:</label>
+            <label htmlFor="sex">
+              Your gender identity: <span className="error">*</span>
+            </label>
             <select
               id="sex"
               value={sex}
               onChange={(e) => setSex(e.target.value)}
-              required
             >
               <option value="">Select...</option>
               <option value="Male">Male</option>
@@ -128,7 +195,9 @@ const HealthDataEntry = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="location">Your current location:</label>
+            <label htmlFor="location">
+              Your current location: <span className="error">*</span>
+            </label>
             <input
               type="text"
               id="location"
@@ -140,8 +209,14 @@ const HealthDataEntry = () => {
           </div>
 
           <div className="form-buttons">
-            <button type="submit">Submit</button>
-            <button type="button" onClick={handleResetForm}>
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
+            <button
+              type="button"
+              onClick={handleResetForm}
+              className="reset-button"
+            >
               Reset
             </button>
             <Link to="/dashboard" className="cancel-button">

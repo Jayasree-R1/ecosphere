@@ -11,31 +11,57 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+/* Profile.css */
+
+.quote-section {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9f7ef; /* Light green background for the quote */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center the quote */
+  font-style: italic; /* Italic style for the quote */
+  color: #333; /* Dark text color */
+}
+
+.title {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+  font-size: 2rem; /* Title size similar to HealthDataEntry */
 }
 
-.profile-info {
+.profile-details {
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
 }
 
 .info-group {
   margin-bottom: 15px;
+  font-size: 1rem; /* Consistent font size */
 }
 
-label {
-  font-weight: bold;
-  color: #555;
+strong {
+  color: #555; /* Make strong text a bit darker */
 }
 
-/* p {
-  margin: 5px 0;
-  color: #333;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-} */
+/* Button Styles */
+.btn {
+  background-color: #007bff; /* Main color for buttons */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for the buttons */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Animation effects */
+  width: 100%; /* Full width for smaller screens */
+  max-width: 150px; /* Maximum width for buttons */
+  margin: 20px auto; /* Center the button */
+  display: block; /* Make the button a block element */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}

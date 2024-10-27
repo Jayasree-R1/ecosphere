@@ -41,7 +41,7 @@ const Congratulations = () => {
 
       {/* Interactive Buttons */}
       <div className="button-container">
-        <h2>Select an Option:</h2>
+        {/* <h2>Select an Option:</h2> */}
         <div className="card-container">
           <div className="card" onClick={() => handleNavigation("/")}>
             <h3>Home</h3>
@@ -55,15 +55,15 @@ const Congratulations = () => {
             className="card"
             onClick={() => handleNavigation("/health-data-entry")}
           >
-            <h3>Edit Data</h3>
+            <h3>Edit</h3>
             <p>Update your health information</p>
           </div>
           <div
             className="card"
             onClick={() => handleNavigation("/health-information")}
           >
-            <h3>Health Data </h3>
-            <p>Learn about chronic conditions</p>
+            <h3> Info </h3>
+            <p>Chronic conditions impacted by weather</p>
           </div>
         </div>
       </div>
