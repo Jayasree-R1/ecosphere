@@ -1,15 +1,12 @@
 require("dotenv").config();
 require("express-async-errors");
-const bodyParser = require('body-parser');
-<<<<<<< Updated upstream
-const cors = require('cors');
-const webpush = require('web-push');
-const path = require('path');
-// const 
-=======
-const webpush = require('web-push');
-const path = require('path');
->>>>>>> Stashed changes
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const webpush = require("web-push");
+const path = require("path");
+// const
+// const webpush = require('web-push');
+// const path = require('path');
 
 const connectDB = require("./db/connect");
 const express = require("express");
@@ -48,10 +45,14 @@ const start = async () => {
 };
 start();
 
-const publicVapidKey = process.env.PUBLIC_VAPID_KEY; 
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
 const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 
-webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, publicVapidKey, privateVapidKey)
+webpush.setVapidDetails(
+  process.env.WEB_PUSH_CONTACT,
+  publicVapidKey,
+  privateVapidKey
+);
 
 app.post("/subscribe", (req, res) => {
   // Get pushSubscription object
@@ -64,10 +65,9 @@ app.post("/subscribe", (req, res) => {
   // Pass object into sendNotification
   webpush
     .sendNotification(subscription, payload)
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 });
 
-<<<<<<< Updated upstream
 // app.get("/", (req, res) => {
 //   res.sendFile(__dirname + "/index.html");
 // });
@@ -77,5 +77,3 @@ app.post("/subscribe", (req, res) => {
 // app.get("/sw.js", (req, res) => {
 //   res.sendFile(__dirname + "/sw.js");
 // });
-=======
->>>>>>> Stashed changes
