@@ -111,6 +111,3 @@ npm run dev
 # Usage
 After starting the application, visit http://localhost:5173 in your browser. Users can now register for a new account or log in using existing credentials.
 
-# this project is a result of 24hours hackathon participated in Techinca 2024
-([https://devpost.com/software/chroniwise-tailored-smart-support-for-daily-chronic-wellness])
-
