@@ -1,4 +1,4 @@
-# Techinca 2024 - ChroniWise
+# Techinca 2024 - ChroniWise (ecosphere)
 ([https://devpost.com/software/chroniwise-tailored-smart-support-for-daily-chronic-wellness])
 
 # MERN With JSON Web Token - Authentication System
