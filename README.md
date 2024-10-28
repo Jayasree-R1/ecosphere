@@ -1,7 +1,7 @@
 # Techinca 2024 - ChroniWise
 ([https://devpost.com/software/chroniwise-tailored-smart-support-for-daily-chronic-wellness])
 
-# MERN Login And Register With JSON Web Token - Authentication System
+# MERN With JSON Web Token - Authentication System
 
 ![landingPage  mern 1](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/landingPage1.png)
 
