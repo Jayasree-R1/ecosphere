@@ -1,10 +1,24 @@
 # MERN Login And Register With JSON Web Token - Authentication System
 
-![login register mern 1](https://github.com/Kuzma02/MERN-Login-And-Register-With-JSON-Web-Token/assets/138793624/057541be-e8ab-4489-996d-117290a85c5a)
+![landingPage  mern 1](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/landingPage1.png)
 
-![login register mern 2](https://github.com/Kuzma02/MERN-Login-And-Register-With-JSON-Web-Token/assets/138793624/364c6008-e211-4796-a745-5829f158e441)
+![loginPage mern 2](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/loginPage2.png)
 
-![login register mern 3](https://github.com/Kuzma02/MERN-Login-And-Register-With-JSON-Web-Token/assets/138793624/403f9988-3970-4b38-9de5-4469ff163164)
+![registerPage mern 3](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/registerPage3.png)
+
+![vitalForm location autopopulatied from weeather API integration mern 4](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/vitalForm4.png)
+
+![vitalForm with Data mern 5](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/vitalFormData5.png)
+
+![CongratulationsPage for Profile set up mern 6](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/congratsPage6.png)
+
+![profilePage mern 7](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/profilePage7.png)
+
+![chronicInfo mern 8](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/chronicInfo8.png)
+
+![sample_pushNotification mern 9](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/pushNotification9.png)
+
+![logoutPage mern 10](https://github.com/Jayasree-R1/ecosphere/blob/master/client/src/assets/logOutPage10.png)
 
 # A Deep Dive into MERN App with Authentication
 Building upon the foundational principles of MongoDB, Express, React, and Node.js, my project offers a detailed implementation of MERN login register functionality. 
